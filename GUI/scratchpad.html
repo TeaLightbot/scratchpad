@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rocket Science Scratchpad</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+ 
+  <style>
+  .deltaV { width: 1000px; height: 180px; padding: 0.5em; }
+  .twr { width: 350px; height: 180px; padding: 0.5em; }
+  .si { width: 370px; height: 180px; padding: 0.5em; }
+  .container { width: 1100px; height: 200px; padding: 0.5em; }
+  </style>
+  <script src="deltaV.js"> </script>
+  <script src="twr.js"> </script>
+  <script src="si.js"> </script>
+  <script>
+    $(function() {
+        var container = 1;
+        $( "body" ).on("click", ".addContainer", function(){
+            $( "#content" ).prepend('<div class="container ui-widget-content" style="overflow: hidden" id="container'+ container + '">' +
+            '<input type="text">' +
+            '</div>');
+            $('#container' + container).droppable({
+                drop: function( event, ui ) {
+                    if (!ui.draggable.hasClass('added')){
+                        $(this).append(ui.draggable.addClass('added').css({position: "relative", top:"", left:""}));
+                    }
+                }
+            })
+            .resizable({minHeight: 25, minWidth: 180})
+            .draggable();
+        });
+    });
+  </script>
+</head>
+<body style="background-image:url(https://wallpaperscraft.com/image/kerbal_space_program_art_spacesuit_management_102393_1920x1080.jpg)">
+ 
+<input type="button" class="addTwr" value="TWR">
+<input type="button" class="addSi" value="Specific Impulse">
+<input type="button" class="addDv" value="Delta V">
+<input type="button" class="addContainer" value="Container">
+
+<div id="content">
+<div id="deltaV1" class="ui-widget-content deltaV" style="display: none"> 
+    <div id="dv-div1">
+        <input type="text">
+        <div id="dv-stage1-1">
+            <h3>Stage 1</h3>
+            <p>
+                <label>Starting mass<input id="mass-start1-1" type="text"></label>
+                <label>End mass<input id="mass-end1-1" type="text"></label>
+                <label>Impulse<input id="si-input1-1" type="text"></label>
+                <label>Gravity<input id="gravity1-1" type="text"></label>
+                <input class="dv-calculate" type="submit" value="Calculate" id="dv-calc1-1">
+            </p>
+            <p>
+                <span>Delta V:</span> <span class="dvResult1" id="dv-result1-1">0</span>.
+            </p>
+        </div> 
+    </div>
+    <div>
+        <h2 id="totalDv1" style="float: right">Total Delta V: 0<input class="dv-addStage" id="dv-addStage1" type="button" value="Add stage"></h2>
+    </div>
+</div>
+
+<div id="twr1" class="ui-widget-content twr" style="display: none"> 
+    <div id="twr-div1">
+        <input type="text">
+        </br>
+        </br>
+        <label>Gravity<input id="gravity1" type="text"></label>
+        
+        <div id="twr-engine1-1">
+            <h3>Engine 1</h3>
+            <p>
+                <label>Mass<input class="mass1" type="text"></label>
+                <label>Force<input class="force1" type="text"></label>
+            </p>
+        </div> 
+    </div>
+    <div>
+        <input class="twr-addEngine" id="twr-addEngine1" type="button" value="Add engine"></h2>
+        <input class="twr-calculate" type="submit" value="Calculate" id="twr-calc1">
+        <h2><span>TWR:</span> <span id="twr-result1">0</span></h2>
+    </div>
+</div>
+
+<div id="si1" class="ui-widget-content si" style="display: none"> 
+    <div id="si-div1">
+        <input type="text">
+        
+        <div id="si-engine1-1" class="si-engine1">
+            <h3>Engine 1</h3>
+            <p>
+                <label>Force<input class="siForce1" type="text"></label>
+                <label>Impulse<input class="siImpulse1" type="text"></label>
+            </p>
+        </div> 
+    </div>
+    <div>
+        <input class="si-addEngine" id="si-addEngine1" type="button" value="Add engine"></h2>
+        <input class="si-calculate" type="submit" value="Calculate" id="si-calc1">
+        <h2><span>SI:</span> <span id="si-result1">0</span></h2>
+    </div>
+</div>
+
+</div>
+</body>
+</html>
