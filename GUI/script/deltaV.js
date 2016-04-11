@@ -10,6 +10,7 @@ $(function() {
       dvStage[dvShip] = 1;
       var newDv = $("#deltaV1").clone();
       newDv.attr('id', 'deltaV' + dvShip);
+      newDv.attr('class', 'ui-widget-content deltaV');
       newDv.find('#dv-div1').attr('id', 'dv-div' + dvShip);
       newDv.find('#dv-stage1-1').attr('id', 'dv-stage' + dvShip + '-1');
       

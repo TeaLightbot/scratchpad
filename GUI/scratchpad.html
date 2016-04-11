@@ -19,8 +19,9 @@
   <script src="script/si.js"> </script>
   <script>
     $(function() {
-        var container = 1;
+        var container = 0;
         $( "body" ).on("click", ".addContainer", function(){
+            container++;
             $( "#content" ).prepend('<div class="container ui-widget-content" style="overflow: hidden" id="container'+ container + '">' +
             '<input type="text">' +
             '</div>');
@@ -28,6 +29,8 @@
                 drop: function( event, ui ) {
                     if (!ui.draggable.hasClass('added')){
                         $(this).append(ui.draggable.addClass('added').css({position: "relative", top:"", left:""}));
+                    } else {
+                        alert("set")
                     }
                 }
             })

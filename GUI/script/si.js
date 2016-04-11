@@ -10,6 +10,7 @@ $(function() {
       siEngine[siShip] = 1;
       var newSi = $("#si1").clone();
       newSi.attr('id', 'si' + siShip);
+      newSi.attr('class', 'ui-widget-content si');
       newSi.find('#si-div1').attr('id', 'si-div' + siShip);
       newSi.find('#si-engine1-1').attr('id', 'si-engine' + siShip + '-1').attr('class', 'si-engine' + siShip);
       

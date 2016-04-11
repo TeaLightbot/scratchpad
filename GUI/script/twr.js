@@ -10,6 +10,7 @@ $(function() {
       twrEngine[twrShip] = 1;
       var newTwr = $("#twr1").clone();
       newTwr.attr('id', 'twr' + twrShip);
+      newTwr.attr('class', 'ui-widget-content twr');
       newTwr.find('#twr-div1').attr('id', 'twr-div' + twrShip);
       newTwr.find('#gravity1').attr('id', 'gravity' + twrShip).val(0);
       newTwr.find('#twr-engine1-1').attr('id', 'twr-engine' + twrShip + '-1');
