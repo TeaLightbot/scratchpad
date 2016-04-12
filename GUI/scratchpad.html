@@ -29,8 +29,6 @@
                 drop: function( event, ui ) {
                     if (!ui.draggable.hasClass('added')){
                         $(this).append(ui.draggable.addClass('added').css({position: "relative", top:"", left:""}));
-                    } else {
-                        alert("set")
                     }
                 }
             })
